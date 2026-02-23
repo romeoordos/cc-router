@@ -1,0 +1,31 @@
+# Source files
+src/
+
+# Development files
+*.ts
+*.tsx
+tsconfig.json
+
+# Development config
+router_config.jsonc
+
+# Development
+node_modules/
+.git/
+.gitignore
+*.md
+!README.md
+
+# IDE
+.vscode/
+
+# OMC
+.omc/
+.claude/
+CLAUDE.md
+AGENTS.md
+
+# Docker
+Dockerfile
+docker-compose.yml
+.dockerignore

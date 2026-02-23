@@ -1,0 +1,60 @@
+{
+  "name": "cc-router",
+  "version": "1.0.0",
+  "description": "Intelligent reverse proxy for routing Claude API requests to multiple AI providers",
+  "type": "module",
+  "main": "dist/cli.js",
+  "bin": {
+    "cc-router": "./dist/cli.js"
+  },
+  "files": [
+    "dist/",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "bun build ./src/cli.ts --outdir ./dist --target bun --splitting --format esm --external react-devtools-core",
+    "start": "bun run dist/cli.js",
+    "dev": "bun --hot run src/cli.ts",
+    "prepublishOnly": "bun run build"
+  },
+  "keywords": [
+    "claude",
+    "router",
+    "proxy",
+    "ai",
+    "llm",
+    "anthropic",
+    "openai",
+    "model-routing",
+    "claude-code",
+    "api-gateway"
+  ],
+  "author": "Roman Bogdziievych <roman.bogdziievych@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/romeoordos/cc-router.git"
+  },
+  "bugs": {
+    "url": "https://github.com/romeoordos/cc-router/issues"
+  },
+  "homepage": "https://github.com/romeoordos/cc-router#readme",
+  "engines": {
+    "bun": ">=1.0.0"
+  },
+  "devDependencies": {
+    "@types/bun": "1.3.9",
+    "@types/react": "^19.2.14",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "ink": "^6.7.0",
+    "jsonc-parser": "^3.3.1",
+    "react": "^19.2.4",
+    "tiktoken": "^1.0.22"
+  },
+  "peerDependencies": {
+    "bun": ">=1.0.0"
+  }
+}

@@ -1,0 +1,36 @@
+# Dependencies
+node_modules/
+
+# Build output (will be built in container)
+dist/
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Development config
+router_config.jsonc
+
+# OMC
+.omc/
+
+# npm pack files
+*.tgz
+
+# Claude settings
+.claude/
+
+# Documentation (not needed in container)
+*.md
+!README.md
