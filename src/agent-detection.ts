@@ -1,67 +1,49 @@
 // Agent type definitions
 export type AgentType =
   'analyst' |
-  'api-reviewer' |
   'architect' |
   'build-fixer' |
   'code-reviewer' |
+  'code-simplifier' |
   'critic' |
   'debugger' |
   'deep-executor' |
-  'dependency-expert' |
   'designer' |
   'document-specialist' |
   'executor' |
   'explore' |
   'git-master' |
-  'information-architect' |
-  'performance-reviewer' |
   'planner' |
-  'product-analyst' |
-  'product-manager' |
   'qa-tester' |
   'quality-reviewer' |
-  'quality-strategist' |
   'scientist' |
   'security-reviewer' |
-  'style-reviewer' |
   'test-engineer' |
-  'ux-researcher' |
   'verifier' |
-  'vision' |
   'writer'
 
 // All valid agent types for validation
 const VALID_AGENT_TYPES: Set<string> = new Set([
   'analyst',
-  'api-reviewer',
   'architect',
   'build-fixer',
   'code-reviewer',
+  'code-simplifier',
   'critic',
   'debugger',
   'deep-executor',
-  'dependency-expert',
   'designer',
   'document-specialist',
   'executor',
   'explore',
   'git-master',
-  'information-architect',
-  'performance-reviewer',
   'planner',
-  'product-analyst',
-  'product-manager',
   'qa-tester',
   'quality-reviewer',
-  'quality-strategist',
   'scientist',
   'security-reviewer',
-  'style-reviewer',
   'test-engineer',
-  'ux-researcher',
   'verifier',
-  'vision',
   'writer'
 ]);
 

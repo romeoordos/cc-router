@@ -26,34 +26,25 @@ The router detects and routes the following oh-my-claudecode agents:
 | Agent | Description |
 |-------|-------------|
 | `analyst` | Requirements analysis, acceptance criteria, hidden constraints |
-| `api-reviewer` | API contracts, versioning, backward compatibility |
 | `architect` | System design, boundaries, interfaces, long-horizon tradeoffs |
 | `build-fixer` | Build and compilation error resolution |
 | `code-reviewer` | Comprehensive code review across concerns |
+| `code-simplifier` | Code simplification and refactoring |
 | `critic` | Plan/design critical challenge |
 | `debugger` | Root-cause analysis, regression isolation, failure diagnosis |
 | `deep-executor` | Complex autonomous goal-oriented tasks |
-| `dependency-expert` | External SDK/API/package evaluation |
 | `designer` | UX/UI architecture, interaction design |
 | `document-specialist` | External documentation & reference lookup |
 | `executor` | Code implementation, refactoring, feature work |
 | `explore` | Internal codebase discovery, symbol/file mapping |
 | `git-master` | Commit strategy, history hygiene |
-| `information-architect` | Taxonomy, navigation, findability |
-| `performance-reviewer` | Hotspots, complexity, memory/latency optimization |
 | `planner` | Task sequencing, execution plans, risk flags |
-| `product-analyst` | Product metrics, funnel analysis, experiments |
-| `product-manager` | Problem framing, personas/JTBD, PRDs |
 | `qa-tester` | Interactive CLI/service runtime validation |
 | `quality-reviewer` | Logic defects, maintainability, anti-patterns |
-| `quality-strategist` | Quality strategy, release readiness, risk assessment |
 | `scientist` | Data/statistical analysis |
 | `security-reviewer` | Vulnerabilities, trust boundaries, authn/authz |
-| `style-reviewer` | Formatting, naming, idioms, lint conventions |
 | `test-engineer` | Test strategy, coverage, flaky-test hardening |
-| `ux-researcher` | Heuristic audits, usability, accessibility |
 | `verifier` | Completion evidence, claim validation, test adequacy |
-| `vision` | Image/screenshot/diagram analysis |
 | `writer` | Docs, migration notes, user guidance |
 
 ## Installation
@@ -168,34 +159,25 @@ The router searches for `router_config.jsonc` in the following locations (in ord
   // ============================================================================
   "agentModelMap": {
     "analyst": "claude-opus-4-6",
-    "api-reviewer": "claude-sonnet-4-6",
     "architect": "claude-opus-4-6",
     "build-fixer": "claude-sonnet-4-6",
     "code-reviewer": "claude-opus-4-6",
+    "code-simplifier": "claude-sonnet-4-6",
     "critic": "claude-opus-4-6",
     "debugger": "claude-sonnet-4-6",
     "deep-executor": "claude-opus-4-6",
-    "dependency-expert": "claude-sonnet-4-6",
     "designer": "claude-sonnet-4-6",
     "document-specialist": "claude-sonnet-4-6",
     "executor": "claude-sonnet-4-6",
     "explore": "claude-haiku-4-5",
     "git-master": "claude-sonnet-4-6",
-    "information-architect": "claude-sonnet-4-6",
-    "performance-reviewer": "claude-sonnet-4-6",
     "planner": "claude-opus-4-6",
-    "product-analyst": "claude-sonnet-4-6",
-    "product-manager": "claude-sonnet-4-6",
     "qa-tester": "claude-sonnet-4-6",
     "quality-reviewer": "claude-opus-4-6",
-    "quality-strategist": "claude-sonnet-4-6",
     "scientist": "claude-sonnet-4-6",
     "security-reviewer": "claude-opus-4-6",
-    "style-reviewer": "claude-haiku-4-5",
     "test-engineer": "claude-sonnet-4-6",
-    "ux-researcher": "claude-sonnet-4-6",
     "verifier": "claude-sonnet-4-6",
-    "vision": "claude-sonnet-4-6",
     "writer": "claude-haiku-4-5"
   },
 

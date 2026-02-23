@@ -1,6 +1,6 @@
 {
   "name": "cc-router",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Intelligent reverse proxy for routing Claude API requests to multiple AI providers",
   "type": "module",
   "main": "dist/cli.js",
