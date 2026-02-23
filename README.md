@@ -58,27 +58,31 @@ The router detects and routes the following oh-my-claudecode agents:
 
 ## Installation
 
-### Via npm (recommended)
-
-```bash
-# Install globally
-npm install -g cc-router
-
-# Or with bun
-bun install -g cc-router
-```
-
-### From source
+### Bun (recommended)
 
 ```bash
 git clone https://github.com/romeoordos/cc-router.git
 cd cc-router
 bun install
+bun run build
+bun link
+```
+
+### NPM
+
+```bash
+git clone https://github.com/romeoordos/cc-router.git
+cd cc-router
+npm install
+npm run build
+npm link
 ```
 
 ### Docker
 
 ```bash
+git clone https://github.com/romeoordos/cc-router.git
+cd cc-router
 # Build the image
 docker build -t cc-router .
 
