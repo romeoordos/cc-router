@@ -175,8 +175,8 @@ async function messagesHandler(request: Request): Promise<Response> {
 
     body.model = modelName;
 
-    // Fix thinking.type: "adaptive" -> "enabled" for Deepseek/Qwen API compatibility
-    if (body.thinking && body.thinking.type === 'adaptive' && (modelName.includes('deepseek') || modelName.includes('qwen'))) {
+    // Fix thinking.type: "adaptive" -> "enabled" for compatibility
+    if (body.thinking && body.thinking.type === 'adaptive' && (!modelName.includes('claude'))) {
       body.thinking.type = 'enabled';
     }
 
