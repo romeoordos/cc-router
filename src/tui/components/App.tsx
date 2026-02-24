@@ -7,6 +7,7 @@ import { Footer } from './Footer';
 import { MinimumSizeWarning } from './MinimumSizeWarning';
 import { StatsPanel } from './StatsPanel';
 import { HistoryPanel } from './HistoryPanel';
+import { ModelsModal } from './ModelsModal';
 
 interface AppProps {
   collector: MetricsCollector;
@@ -23,8 +24,9 @@ export function App({ collector }: AppProps): React.ReactElement {
     height: stdout?.rows ?? 24,
   });
 
-  // About modal state
+  // Modal state
   const [showAbout, setShowAbout] = useState(false);
+  const [showModels, setShowModels] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -42,16 +44,23 @@ export function App({ collector }: AppProps): React.ReactElement {
     };
   }, [stdout]);
 
-  // Handle 'a' key to toggle About modal (only when not shown)
   useInput((input, key) => {
     if (showAbout) {
       if (key.escape) {
         setShowAbout(false);
       }
-    } else {
-      if (input === 'a' || input === 'A') {
-        setShowAbout(true);
-      }
+      return;
+    }
+    // CRITICAL: Do NOT handle Escape when showModels is true
+    // ModelsModal manages its own close lifecycle with unsaved changes confirmation
+    if (showModels) {
+      return;
+    }
+    if (input === 'a' || input === 'A') {
+      setShowAbout(true);
+    }
+    if (input === 'm' || input === 'M') {
+      setShowModels(true);
     }
   });
 
@@ -73,7 +82,6 @@ export function App({ collector }: AppProps): React.ReactElement {
   // Overhead: MenuBar (1) + marginTop (1) + Footer (1) + help text (1) = 4
   const availableHeight = terminalHeight - 4;
 
-  // When About modal is shown, overlay it on top
   if (showAbout) {
     return (
       <Box flexDirection="column" height={terminalHeight} width={terminalWidth}>
@@ -83,9 +91,13 @@ export function App({ collector }: AppProps): React.ReactElement {
     );
   }
 
+  if (showModels) {
+    return <ModelsModal onClose={() => setShowModels(false)} />;
+  }
+
   return (
     <Box flexDirection="column" height={terminalHeight}>
-      <MenuBar />
+      <MenuBar showModels={showModels} />
 
       <Box flexDirection="row" flexGrow={1} marginTop={1}>
         <Box marginRight={2} flexGrow={1}>
@@ -101,7 +113,7 @@ export function App({ collector }: AppProps): React.ReactElement {
       />
 
       <Box justifyContent="center">
-        <Text dimColor>Press Ctrl+C to exit | Press 'a' for About</Text>
+        <Text dimColor>Ctrl+C to exit | 'a' About | 'm' Models</Text>
       </Box>
     </Box>
   );

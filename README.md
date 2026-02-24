@@ -16,6 +16,7 @@ A smart API router for Claude Code that intelligently routes requests to differe
   - Topic summarizer special handling (uses haiku tier for efficiency)
 - **Hot Reload Configuration** - Configuration changes take effect immediately without restart
 - **TUI Dashboard** - Interactive terminal UI showing real-time metrics
+- **Models Menu** - Press `m` in the TUI to open an interactive model configuration editor; change agent and orchestrator mappings and save to config with comment preservation
 - **Token Counting** - Built-in endpoint for token estimation
 - **Metrics Collection** - Tracks request latency, tokens/second, and routing decisions
 
@@ -264,7 +265,13 @@ The TUI activates automatically when running in an interactive terminal. It show
 - Model routing decisions
 - Agent detection
 
-Press `Ctrl+C` to exit.
+| Key | Action |
+|-----|--------|
+| `Ctrl+C` | Exit the router |
+| `a` | Open About dialog |
+| `m` | Open Models configuration editor |
+
+**Models editor** — navigate agents and orchestrator tiers with Up/Down, press `Enter` to open a dropdown and select a model, `Tab` to switch sections, `s` to save. Changes are written atomically to `router_config.jsonc` with comments preserved.
 
 
 ## Routing Logic

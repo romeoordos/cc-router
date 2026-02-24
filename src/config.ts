@@ -1,7 +1,7 @@
-import { readFileSync, existsSync, mkdirSync, writeFileSync } from "fs";
+import { readFileSync, existsSync, mkdirSync, writeFileSync, renameSync } from "fs";
 import { join, dirname } from "path";
 import { homedir } from "os";
-import { parse } from "jsonc-parser";
+import { parse, modify, applyEdits } from "jsonc-parser";
 
 interface ModelConfig {
   url: string;
@@ -115,6 +115,45 @@ function createDefaultConfig(): string {
   console.log(`Please edit the config file and add your API keys.`);
   
   return configPath;
+}
+
+// Get the path to the active config file, creating it if needed
+export function getConfigPath(): string {
+  const configPaths = getConfigPaths();
+
+  for (const path of configPaths) {
+    if (existsSync(path)) {
+      return path;
+    }
+  }
+
+  // No config found - create default
+  return createDefaultConfig();
+}
+
+// Save config updates with comment preservation and atomic write
+export function saveConfig(updates: {
+  agentModelMap?: Record<string, string>;
+  orchestratorModelMap?: Record<string, string>;
+}): void {
+  const configPath = getConfigPath();
+  const rawContent = readFileSync(configPath, "utf-8");
+
+  let modifiedContent = rawContent;
+  const formattingOptions = { insertSpaces: true, tabSize: 2 };
+
+  if (updates.agentModelMap !== undefined) {
+    const edits = modify(modifiedContent, ["agentModelMap"], updates.agentModelMap, { formattingOptions });
+    modifiedContent = applyEdits(modifiedContent, edits);
+  }
+  if (updates.orchestratorModelMap !== undefined) {
+    const edits = modify(modifiedContent, ["orchestratorModelMap"], updates.orchestratorModelMap, { formattingOptions });
+    modifiedContent = applyEdits(modifiedContent, edits);
+  }
+
+  const tempPath = configPath + ".tmp";
+  writeFileSync(tempPath, modifiedContent, "utf-8");
+  renameSync(tempPath, configPath);
 }
 
 function loadConfig(): Config {

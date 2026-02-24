@@ -23,7 +23,7 @@ export type AgentType =
   'writer'
 
 // All valid agent types for validation
-const VALID_AGENT_TYPES: Set<string> = new Set([
+export const VALID_AGENT_TYPES: Set<string> = new Set([
   'analyst',
   'architect',
   'build-fixer',
